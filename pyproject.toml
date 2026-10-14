@@ -1,0 +1,40 @@
+[project]
+name = "industrial-ml-course"
+version = "0.1.0"
+description = "Industrial Machine Learning Engineering"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=6.29.0",     # For Jupyter Notebook support in VS Code
+    "numpy>=1.26.0",         # Week 2 Vectorized operations
+    "pandas>=2.1.0",          # Week 2 DataFrames & data wrangling
+    "openpyxl>=3.1.0",        # Week 2 Excel support
+    "psycopg2-binary>=2.9.0",  # Week 2 PostgreSQL sandbox connection
+    "matplotlib>=3.8.0",
+    "seaborn>=0.13.0",
+    "phonenumbers>=9.0.40",
+    "kagglehub>=1.0.2",
+    "scikit-learn>=1.4.0"
+]
+
+[tool.uv]
+managed = true
+package = false
+
+# Silences test-running shell warnings and deprecated notices
+[tool.pytest.ini_options]
+addopts = "-q --tb=short"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
+
+# Standardizes terminal execution environment variables to reduce backend noise
+[tool.environment]
+PYTHONWARNINGS = "ignore"
+PIP_DISABLE_PIP_VERSION_CHECK = "1"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "jupyter>=1.1.1",
+]
